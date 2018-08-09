@@ -13,5 +13,9 @@
   "license": "ISC",
   "devDependencies": {
     "docz": "^0.9.6"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "styled-components": "^3.4.2"
   }
 }
