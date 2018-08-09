@@ -1,0 +1,17 @@
+{
+  "name": "core-doc",
+  "version": "0.0.1",
+  "description": "Documentation",
+  "scripts": {
+    "dev": "docz dev",
+    "build": "docz build"
+  },
+  "keywords": [
+    "docz"
+  ],
+  "author": "BranLiang",
+  "license": "ISC",
+  "devDependencies": {
+    "docz": "^0.9.6"
+  }
+}
