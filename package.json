@@ -12,7 +12,10 @@
   "author": "BranLiang",
   "license": "ISC",
   "devDependencies": {
-    "docz": "^0.9.6"
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "docz": "^0.9.6",
+    "flow-bin": "^0.78.0"
   },
   "dependencies": {
     "react": "^16.4.2",
