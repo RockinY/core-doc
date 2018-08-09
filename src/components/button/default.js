@@ -1,0 +1,98 @@
+import React from 'react'
+import styled, { css } from 'styled-components'
+import {
+  Transition,
+  Shadow,
+  hexa,
+  Gradient
+} from '../globals'
+import theme from '../../theme'
+
+const baseButton = css`
+  display: flex;
+  flex: none;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 600;
+  white-space: nowrap;
+  word-break: keep-all;
+  transition: ${Transition.hover.off};
+  cursor: pointer;
+  font-size: ${props => (props.large ? '18px' : '14px')};
+  line-height: 1;
+  position: relative;
+  text-align: center;
+  padding: ${props =>
+    props.icon
+      ? props.large ? '8px 12px' : '4px 8px'
+      : props.large ? '16px 32px' : '12px 16px'};
+  
+  &:hover {
+    transition: ${Transition.hover.on};
+    box-shadow: ${props =>
+      props.disabled
+        ? 'none'
+        : `${Shadow.high} ${hexa(theme.bg.reverse, 0.15)}`};
+    opacity: ${props => (props.disabled ? '0.5' : '1')};
+  }
+
+  div + span,
+  span + span {
+    margin: 0 8px;
+  }
+`
+
+const StyledSolidButton = styled.button`
+  ${baseButton}
+  background-color: ${props =>
+    props.disabled
+      ? theme.bg.inactive
+      : eval(`theme.${props.color ? props.color : `brand.alt`}`)};
+  background-image: ${props =>
+    props.disabled || props.gradientTheme === 'none'
+      ? 'none'
+      : props.gradientTheme
+        ? Gradient(
+          eval(`theme.${props.gradientTheme}.alt`),
+          eval(`theme.${props.gradientTheme}.default`)
+        )
+        : Gradient(theme.brand.alt, theme.brand.default)};
+  color: ${props => theme.text.reverse};
+
+  &:hover {
+    background-color: ${props =>
+      props.disabled
+        ? theme.bg.inactive
+        : eval(`theme.${props.hoverColor ? props.hoverColor : 'brand.alt'}`)};
+  }
+
+  &:active {
+    box-shadow: ${props =>
+      props.disabled
+        ? 'none'
+        : `${Shadow.low} ${hexa(theme.bg.reverse, 0.15)}`};
+  }
+`
+
+type ButtonProps = {
+  loading?: boolean,
+  disabled?: boolean,
+  large?: boolean,
+  color?: string,
+  gradientTheme?: string,
+  icon?: string,
+  children?: any,
+  dataCy?: string
+}
+
+export const Button = (props: ButtonProps) => (
+  <StyledSolidButton disabled={props.loading} {...props}>
+    {props.icon ? (
+      props.loading ? (
+        
+      )
+    )}
+  </StyledSolidButton>
+)
