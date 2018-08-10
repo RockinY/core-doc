@@ -35,3 +35,12 @@ export const hexa = (hex, alpha) => {
 export const Gradient = (g1, g2) => {
   return css`radial-gradient(ellipse farthest-corner at top left, ${g1} 0%, ${g2} 100%)`
 }
+
+export const zIndex = new function () {
+  this.toast = 6000
+  this.tooltip = this.toast + 1
+}
+
+export const fontStack = css`
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Segoe', sans-serif;
+`

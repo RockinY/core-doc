@@ -7,6 +7,7 @@ import {
   Gradient
 } from '../globals'
 import theme from '../../theme'
+import Spinner from '../globals/spinner'
 
 const baseButton = css`
   display: flex;
@@ -76,6 +77,12 @@ const StyledSolidButton = styled.button`
   }
 `
 
+const SpinnerContainer = styled.div`
+  width: 32px;
+  height: 32px;
+  position: relative;
+`
+
 type ButtonProps = {
   loading?: boolean,
   disabled?: boolean,
@@ -91,7 +98,11 @@ export const Button = (props: ButtonProps) => (
   <StyledSolidButton disabled={props.loading} {...props}>
     {props.icon ? (
       props.loading ? (
-        
+        <SpinnerContainer>
+          <Spinner color='text.reverse' size='16' />
+        </SpinnerContainer>
+      ) : (
+        <Icon glyph={props.icon} />
       )
     )}
   </StyledSolidButton>
