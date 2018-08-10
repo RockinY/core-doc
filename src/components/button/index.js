@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, ThemeProvider } from 'styled-components'
 import {
   Transition,
   Shadow,
@@ -8,6 +8,7 @@ import {
 } from '../globals'
 import theme from '../../theme'
 import Spinner from '../globals/spinner'
+import Icon from '../icon'
 
 const baseButton = css`
   display: flex;
@@ -50,23 +51,23 @@ const StyledSolidButton = styled.button`
   background-color: ${props =>
     props.disabled
       ? theme.bg.inactive
-      : eval(`theme.${props.color ? props.color : `brand.alt`}`)};
+      : eval(`props.theme.${props.color ? props.color : `brand.alt`}`)};
   background-image: ${props =>
     props.disabled || props.gradientTheme === 'none'
       ? 'none'
       : props.gradientTheme
         ? Gradient(
-          eval(`theme.${props.gradientTheme}.alt`),
-          eval(`theme.${props.gradientTheme}.default`)
+          eval(`props.theme.${props.gradientTheme}.alt`),
+          eval(`props.theme.${props.gradientTheme}.default`)
         )
         : Gradient(theme.brand.alt, theme.brand.default)};
-  color: ${props => theme.text.reverse};
+  color: ${theme.text.reverse};
 
   &:hover {
     background-color: ${props =>
       props.disabled
         ? theme.bg.inactive
-        : eval(`theme.${props.hoverColor ? props.hoverColor : 'brand.alt'}`)};
+        : eval(`props.theme.${props.hoverColor ? props.hoverColor : 'brand.alt'}`)};
   }
 
   &:active {
@@ -83,6 +84,16 @@ const SpinnerContainer = styled.div`
   position: relative;
 `
 
+const Label = styled.span`
+  display: block;
+  flex: 0 0 auto;
+  line-height: inherit;
+  color: inherit;
+  ${props => (props.loading && !props.hasIcon ? 'opacity: 0;' : 'opacity: 1;')};
+  align-self: center;
+  margin: auto;
+`
+
 type ButtonProps = {
   loading?: boolean,
   disabled?: boolean,
@@ -94,16 +105,26 @@ type ButtonProps = {
   dataCy?: string
 }
 
-export const Button = (props: ButtonProps) => (
-  <StyledSolidButton disabled={props.loading} {...props}>
-    {props.icon ? (
-      props.loading ? (
-        <SpinnerContainer>
-          <Spinner color='text.reverse' size='16' />
-        </SpinnerContainer>
+const Button = (props: ButtonProps) => (
+  <ThemeProvider theme={theme}>
+    <StyledSolidButton disabled={props.loading} {...props}>
+      {props.icon ? (
+        props.loading ? (
+          <SpinnerContainer>
+            <Spinner color='text.reverse' size='16' />
+          </SpinnerContainer>
+        ) : (
+          <Icon glyph={props.icon} />
+        )
       ) : (
-        <Icon glyph={props.icon} />
-      )
-    )}
-  </StyledSolidButton>
+        ''
+      )}
+      {props.loading && !props.icon && <Spinner color='text.reverse' size='16' />}
+      <Label loading={props.loading} hasIcon={props.icon}>
+        {props.children}
+      </Label>
+    </StyledSolidButton>
+  </ThemeProvider>
 )
+
+export default Button;

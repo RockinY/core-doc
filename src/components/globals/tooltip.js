@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import { zIndex, Shadow, fontStack, hexa } from './'
+import { zIndex, Shadow, fontStack, hexa } from '.'
 import theme from '../../theme'
 
 const returnTooltip = props => {
