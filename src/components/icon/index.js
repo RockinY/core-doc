@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, ThemeProvider } from 'styled-components'
 import Tooltip from '../globals/tooltip'
 import theme from '../../theme'
 
@@ -86,31 +86,33 @@ class Icon extends React.Component<Props> {
     } = this.props
 
     return (
-      <SvgWrapper
-        size={size}
-        tipText={tipText}
-        tipLocation={tipLocation}
-        onboarding={onboarding}
-        count={count}
-        className={'icon'}
-        onClick={onClick}
-      >
-        <InlineSvg
-          fillRule='evenodd'
-          clipRule='evenodd'
-          strokeLinejoin='round'
-          strokeMiterlimit='1.414'
-          xmlns='http://www.w3.org/2000/svg'
-          aria-labelledby='title'
-          viewBox='0 0 32 32'
-          preserveAspectRatio='xMidYMid meet'
-          fit
-          id={glyph}
+      <ThemeProvider theme={theme}>
+        <SvgWrapper
+          size={size}
+          tipText={tipText}
+          tipLocation={tipLocation}
+          onboarding={onboarding}
+          count={count}
+          className={'icon'}
+          onClick={onClick}
         >
-          <title id='title'>{glyph}</title>
-          <Glyph glyph={glyph} />
-        </InlineSvg>
-      </SvgWrapper>
+          <InlineSvg
+            fillRule='evenodd'
+            clipRule='evenodd'
+            strokeLinejoin='round'
+            strokeMiterlimit='1.414'
+            xmlns='http://www.w3.org/2000/svg'
+            aria-labelledby='title'
+            viewBox='0 0 32 32'
+            preserveAspectRatio='xMidYMid meet'
+            fit
+            id={glyph}
+          >
+            <title id='title'>{glyph}</title>
+            <Glyph glyph={glyph} />
+          </InlineSvg>
+        </SvgWrapper>
+      </ThemeProvider>
     )
   }
 }

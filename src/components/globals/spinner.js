@@ -25,12 +25,12 @@ export default styled.span`
     border-radius: 50%;
     border: 2px solid ${props =>
       props.color
-        ? eval(`theme.${props.color}`)
+        ? eval(`props.theme.${props.color}`)
         : theme.brand.alt};
     border-top-color: transparent;
     border-right-color: ${props =>
       props.color
-        ? eval(`theme.${props.color}`)
+        ? eval(`props.theme.${props.color}`)
         : theme.brand.alt};
     border-bottom-color: transparent;
     animation: ${spin} 2s linear infinite;
