@@ -9,5 +9,6 @@ export default {
       primary: theme.brand.default,
       link: theme.brand.alt
     }
-  }
+  },
+  dest: './build'
 }

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Documentation",
   "scripts": {
+    "start": "serve -s build",
     "dev": "docz dev",
     "build": "docz build"
   },
