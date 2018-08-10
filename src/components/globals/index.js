@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import theme from '../../theme'
 
 export const Transition = {
   hover: {
@@ -44,3 +45,12 @@ export const zIndex = new function () {
 export const fontStack = css`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Segoe', sans-serif;
 `
+
+export const pickColor = (group: string, item: string) => {
+  return theme[group][item]
+}
+
+export const generateColor = (color: string) => {
+  const [group, item] = color.split('.')
+  return pickColor(group, item)
+}

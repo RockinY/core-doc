@@ -1,10 +1,12 @@
 import React from 'react'
-import styled, { css, ThemeProvider } from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   Transition,
   Shadow,
   hexa,
-  Gradient
+  Gradient,
+  generateColor,
+  pickColor
 } from '../globals'
 import theme from '../../theme'
 import Spinner from '../globals/spinner'
@@ -51,14 +53,14 @@ const StyledSolidButton = styled.button`
   background-color: ${props =>
     props.disabled
       ? theme.bg.inactive
-      : eval(`props.theme.${props.color ? props.color : `brand.alt`}`)};
+      : props.color ? generateColor(props.color) : theme.brand.alt};
   background-image: ${props =>
     props.disabled || props.gradientTheme === 'none'
       ? 'none'
       : props.gradientTheme
         ? Gradient(
-          eval(`props.theme.${props.gradientTheme}.alt`),
-          eval(`props.theme.${props.gradientTheme}.default`)
+          pickColor(props.gradientTheme, 'alt'),
+          pickColor(props.gradientTheme, 'default')
         )
         : Gradient(theme.brand.alt, theme.brand.default)};
   color: ${theme.text.reverse};
@@ -67,7 +69,7 @@ const StyledSolidButton = styled.button`
     background-color: ${props =>
       props.disabled
         ? theme.bg.inactive
-        : eval(`props.theme.${props.hoverColor ? props.hoverColor : 'brand.alt'}`)};
+        : props.hoverColor ? generateColor(props.hoverColor) : theme.brand.alt};
   }
 
   &:active {
@@ -106,25 +108,23 @@ type ButtonProps = {
 }
 
 const Button = (props: ButtonProps) => (
-  <ThemeProvider theme={theme}>
-    <StyledSolidButton disabled={props.loading} {...props}>
-      {props.icon ? (
-        props.loading ? (
-          <SpinnerContainer>
-            <Spinner color='text.reverse' size='16' />
-          </SpinnerContainer>
-        ) : (
-          <Icon glyph={props.icon} />
-        )
+  <StyledSolidButton disabled={props.loading} {...props}>
+    {props.icon ? (
+      props.loading ? (
+        <SpinnerContainer>
+          <Spinner color='text.reverse' size='16' />
+        </SpinnerContainer>
       ) : (
-        ''
-      )}
-      {props.loading && !props.icon && <Spinner color='text.reverse' size='16' />}
-      <Label loading={props.loading} hasIcon={props.icon}>
-        {props.children}
-      </Label>
-    </StyledSolidButton>
-  </ThemeProvider>
+        <Icon glyph={props.icon} />
+      )
+    ) : (
+      ''
+    )}
+    {props.loading && !props.icon && <Spinner color='text.reverse' size='16' />}
+    <Label loading={props.loading} hasIcon={props.icon}>
+      {props.children}
+    </Label>
+  </StyledSolidButton>
 )
 
 export default Button;

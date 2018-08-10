@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import theme from '../../theme'
+import { generateColor } from '.'
 
 const spin = keyframes`
   to {transform: rotate(360deg)}
@@ -25,12 +26,12 @@ export default styled.span`
     border-radius: 50%;
     border: 2px solid ${props =>
       props.color
-        ? eval(`props.theme.${props.color}`)
+        ? generateColor(props.color)
         : theme.brand.alt};
     border-top-color: transparent;
     border-right-color: ${props =>
       props.color
-        ? eval(`props.theme.${props.color}`)
+        ? generateColor(props.color)
         : theme.brand.alt};
     border-bottom-color: transparent;
     animation: ${spin} 2s linear infinite;
