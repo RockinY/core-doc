@@ -15,7 +15,7 @@ RUN yarn global add serve
 # Bundle app source
 COPY . .
 
-EXPOSE 3009
+EXPOSE 5000
 
 # Start the server
 CMD [ "yarn", "run", "start" ]
