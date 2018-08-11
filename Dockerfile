@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 5000
 
 # Start the server
-CMD [ "yarn", "run", "start" ]
+CMD [ "yarn", "run", "deploy" ]

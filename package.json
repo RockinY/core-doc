@@ -5,7 +5,9 @@
   "scripts": {
     "start": "serve -s build",
     "dev": "docz dev",
-    "build": "docz build"
+    "build": "docz build",
+    "prepare": "rm -rf ./build",
+    "deploy": "yarn run prepare && yarn run build && yarn run start"
   },
   "keywords": [
     "docz"
