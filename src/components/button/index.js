@@ -103,8 +103,7 @@ type ButtonProps = {
   color?: string,
   gradientTheme?: string,
   icon?: string,
-  children?: any,
-  dataCy?: string
+  children?: any
 }
 
 const Button = (props: ButtonProps) => (
