@@ -4,6 +4,7 @@ export default {
   title: '云社开发文档',
   description: '设计代码规范及元素组件使用说明',
   port: '3009',
+  ordering: 'ascending',
   themeConfig: {
     logo: {
       src: 'https://yunshemix.oss-cn-hangzhou.aliyuncs.com/logos/logo.png'
