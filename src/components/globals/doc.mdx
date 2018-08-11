@@ -6,7 +6,7 @@ order: 99
 
 import { Playground, PropsTable } from 'docz'
 import Spinner from './spinner'
-import Tooltip from './tooltip'
+import VisuallyHidden from './visuallyHidden'
 
 # Global
 
@@ -14,4 +14,12 @@ import Tooltip from './tooltip'
 
 <Playground>
   <Spinner inline />
+</Playground>
+
+## VisuallyHidden
+
+<Playground>
+  <VisuallyHidden>
+    <span>You should not see me</span>
+  </VisuallyHidden>
 </Playground>
