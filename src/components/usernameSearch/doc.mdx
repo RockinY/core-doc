@@ -1,0 +1,37 @@
+---
+name: UsernameSearch
+route: /components/username-search
+order: 100
+---
+
+import { Playground } from 'docz'
+import UsernameSearch from '.'
+
+# UsernameSearch
+
+## Default
+
+<Playground>
+  <UsernameSearch
+    placeholder="Please input a username"
+    username="branliang"
+  />
+</Playground>
+
+## Small
+
+<Playground>
+  <UsernameSearch
+    placeholder="Please input a username"
+    size="small"
+  />
+</Playground>
+
+## Searching
+
+<Playground>
+  <UsernameSearch
+    placeholder="Please input a username"
+    isSearching={true}
+  />
+</Playground>
