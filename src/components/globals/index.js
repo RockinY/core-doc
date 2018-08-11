@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import styled, { css } from 'styled-components'
 import theme from '../../theme'
 
 export const Transition = {
@@ -55,14 +55,14 @@ export const generateColor = (color: string) => {
   return pickColor(group, item)
 }
 
-export default FlexRow = styled.div`
+export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 `
 
-export default FlexCol = styled.div`
+export const FlexCol = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

@@ -182,7 +182,7 @@ export default props => css`
 
   &:hover:after,
   &:hover:before {
-    opacity: 1,
+    opacity: 1;
     transition: opacity 0.1s ease-in 0.1s;
   }
 `

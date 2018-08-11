@@ -19,10 +19,12 @@ const Wrapper = styled(FlexRow)`
   }
 `
 
-const AppViewWrapperPure = props => {
+const AppViewWrapperPure = (props: any) => {
   return (
     <Wrapper {...props}>
       {props.children}
     </Wrapper>
   )
 }
+
+export default AppViewWrapperPure;
