@@ -54,3 +54,17 @@ export const generateColor = (color: string) => {
   const [group, item] = color.split('.')
   return pickColor(group, item)
 }
+
+export default FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`
+
+export default FlexCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+`
